@@ -10,9 +10,9 @@
         android:id="@+id/Return_Back_to_page1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginBottom="16dp"
-        android:text="Return to previous page"
+        android:layout_marginStart="168dp"
+        android:layout_marginBottom="32dp"
+        android:text="返回"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
