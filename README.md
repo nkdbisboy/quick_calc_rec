@@ -1,7 +1,7 @@
 ## 如何分分钟实现速算题的自动批改
 ### 执行逻辑
 这里选择使用android开发环境，执行流程很简单，如下图所示。
-![c18c7d1033e75df485ead32456a8cabe.png](en-resource://database/905:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/拍照速算流程.png)
 本示例支持拍照和本地图片选择两种模式，核心在于调用科大讯飞提供的“拍照速算识别”引擎，然后解析引擎返回的结果进行绘图展示即可。
 ### 环境准备
 #### android开发环境
@@ -12,13 +12,13 @@
 登陆https://www.xfyun.cn/，点击右上角注册按钮按照提示流程完成注册。
 2. 创建应用
 登陆成功后，点击右上角“控制台”进入控制台页面
-![f63c3c570611975ad775c68f4c5fd777.png](en-resource://database/907:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/创建应用.png)
 点击创建新应用
-![180092a5b9c4d2a0c6cdf562458f2b51.png](en-resource://database/909:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/提交应用.png)
 填写应用的基本信息，点击提交即可创建应用成功。
 3. 获取授权
 在控制台点击左侧 “文字识别”-> "拍照速算识别"，记录下APPID、APISecret、APIKey备用。
-![6bc94421e9c8a306a717f725dee14583.png](en-resource://database/911:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/获取授权.png)
 ### 开发环节
 #### 拍照并展示
 调用相机的核心代码如下
@@ -62,7 +62,7 @@ startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
 ```
 #### 拍照速算识别引擎调用
 在获取到小学算数题的图片后，就可以开始调用拍照速算识别引擎了，在调用业务接口时，都需要在 Http Request Body 中配置以下参数，请求数据均为json字符串。
-![30ff4739f569b3a47fb6485cebeb1e1d.png](en-resource://database/913:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/引擎调用.png)
 但实际操作时不需要这么麻烦，官网（[https://www.xfyun.cn/services/photo-calculate-recg](https://www.xfyun.cn/services/photo-calculate-recg)）上提供了调用的示例代码，直接下载下来就可以使用，这里不做赘述，需要注意的是，示例代码中的星号部分需要替换为环境准备阶段申请的应用授权信息，如下所示：
 ```
     // ITR webapi 接口地址
@@ -77,11 +77,11 @@ startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
 ```
 #### 解析识别结果
 引擎返回结果为一个json结构，包含字段如下：
-![a78d7182c93d2140ce0477d4c3f35a62.png](en-resource://database/915:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/解析识别结果1.png)
 识别结果信息在data字段里，其中主要包含了识别出来的每个算数题的位置信息、算术题的识别文本结果、算数题判决正误信息。
-![39474a1fc96ef35941c1b0fb43213dc0.png](en-resource://database/917:1)
-![0a36e5e6a44b83400616c3ad7b5d3903.png](en-resource://database/919:1)
-![8df0b300f6b4553772edeb8be56a378b.png](en-resource://database/921:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/解析识别结果2.png)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/解析识别结果3.png)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/解析识别结果4.png)
 #### 绘图并展示
 对于计算正确的算术题使用绿色方框显示，对于计算错误的算术题使用红色方框显示。
 ```
@@ -147,11 +147,11 @@ startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
 ### 效果展示
 至此，开发过程完成，让我们来体验一下程序的执行效果：
 1. 点开主界面，这里为了方便展示，选择“相册”
-![aaf67d1800557e347cafdbb786af2ef2.png](en-resource://database/938:0)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/效果展示1.png)
 2. 选择一张事先拍好的小学算数题
-![79fb4a0657d84d3af1c1b8e63a6ae587.png](en-resource://database/925:1)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/效果展示2.png)
 3. 展示自动批改后的效果图
-![a293406798752aeb3375eb8702412fff.png](en-resource://database/940:0)
+![image](https://github.com/nkdbisboy/quick_calc_rec/tree/master/images/效果展示3.png))
 ### 完整代码获取
 https://github.com/nkdbisboy/quick_calc_rec
 注意，使用需要替换源码中APPID、APISecret、APIKey字段定义，获取方式见“环境准备”章节。
